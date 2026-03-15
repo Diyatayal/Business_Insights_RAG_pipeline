@@ -1,9 +1,9 @@
 import os
 
-GROQ_API_KEY = os.environ.get("GROQ_API_KEY", "your_api_key")
-SERP_API_KEY = os.environ.get("SERP_API_KEY", "your_api_key")
+OPENAI_API_KEY = "your_api_key"
+SERP_API_KEY = "your_api_key"
 
-GROQ_MODEL = "llama3-8b-8192"
+OPENAI_MODEL = "gpt-4o-mini"
 EMBEDDING_MODEL = "all-MiniLM-L6-v2"
 CHROMA_PERSIST_DIR = "./chroma_db"
 DATA_DIR = "./data"
