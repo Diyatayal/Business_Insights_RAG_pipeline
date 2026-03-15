@@ -39,14 +39,32 @@ TOOLS_SCHEMA = [
     {
         "type": "function",
         "function": {
-            "name": t.name,
-            "description": t.description,
-            "parameters": t.args_schema.schema()
+            "name": "search_annual_reports",
+            "description": "Search company annual reports for financials, revenue, strategy, growth, EBITDA, segments, balance sheet, cash flow, and any company-specific information. Use this FIRST for company questions.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "query": {"type": "string", "description": "Search query for annual reports"}
+                },
+                "required": ["query"]
+            }
+        }
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "search_web",
+            "description": "Search the web for general financial concepts, companies not in the reports, real-time news, or when annual report search has no results.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "query": {"type": "string", "description": "Search query for the web"}
+                },
+                "required": ["query"]
+            }
         }
     }
-    for t in TOOLS_LIST
 ]
-
 TOOLS_MAP = {t.name: t for t in TOOLS_LIST}
 
 
@@ -94,7 +112,9 @@ Always cite your source."""
     for tc in msg.tool_calls:
         tool_fn = TOOLS_MAP[tc.function.name]
         args = json.loads(tc.function.arguments)
-        result = tool_fn.invoke(args)
+        tool_label = "📂 Searching Annual Reports..." if tc.function.name == "search_annual_reports" else "🌐 Searching the Web..."
+        st.info(f"**Tool called:** `{tc.function.name}` — {tool_label}")
+        result = tool_fn.invoke({"query": args["query"]})
 
         messages.append({
             "role": "tool",
