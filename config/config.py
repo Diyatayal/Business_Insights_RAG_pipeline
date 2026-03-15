@@ -1,7 +1,8 @@
 import os
+OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY", "your_api_key")
+OPENAI_MODEL = "gpt-4o-mini"
 
-OPENAI_API_KEY = "your_api_key"
-SERP_API_KEY = "your_api_key"
+SERP_API_KEY = os.environ.get("SERP_API_KEY", "your_api_key")
 
 OPENAI_MODEL = "gpt-4o-mini"
 EMBEDDING_MODEL = "all-MiniLM-L6-v2"
