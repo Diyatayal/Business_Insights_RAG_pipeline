@@ -1,6 +1,6 @@
 import os
 OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY", "your_api_key")
-OPENAI_MODEL = "gpt-4o-mini"
+
 
 SERP_API_KEY = os.environ.get("SERP_API_KEY", "your_api_key")
 
