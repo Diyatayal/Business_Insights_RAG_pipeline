@@ -6,7 +6,7 @@
 
 ## Overview
 
-A Streamlit-based chatbot that answers questions about company financials by intelligently searching uploaded annual report PDFs or the web — depending on what the question needs. It uses Groq's LLM with LangChain `@tool` decorators to decide which source to query automatically.
+A Streamlit-based chatbot that answers questions about company financials by intelligently searching uploaded annual report PDFs or the web — depending on what the question needs. It uses OpenAI LLM with LangChain `@tool` decorators to decide which source to query automatically.
 
 ---
 
@@ -22,15 +22,15 @@ A Streamlit-based chatbot that answers questions about company financials by int
 
 ## Tech Stack
 
-| Component     | Technology                                  |
-|---------------|---------------------------------------------|
-| Frontend      | Streamlit                                   |
-| LLM           | Groq (`llama3-groq-70b-8192-tool-use-preview`) |
-| Embeddings    | HuggingFace `all-MiniLM-L6-v2`             |
-| Vector Store  | ChromaDB                                    |
-| Web Search    | SerpAPI via LangChain                       |
-| Framework     | LangChain Core + LangChain Groq             |
-| PDF Loading   | LangChain PyPDFLoader                       |
+| Component     | Technology                      |
+|---------------|---------------------------------|
+| Frontend      | Streamlit                       |
+| LLM           | OpenAI (gpt-4.0-mini)           |
+| Embeddings    | HuggingFace `all-MiniLM-L6-v2`  |
+| Vector Store  | ChromaDB                        |
+| Web Search    | SerpAPI via LangChain           |
+| Framework     | LangChain Core + LangChain Groq |
+| PDF Loading   | LangChain PyPDFLoader           |
 
 ---
 
@@ -72,7 +72,7 @@ pip install -r requirements.txt
 ### 3. Add your API keys in `config/config.py`
 
 ```python
-GROQ_API_KEY = "your_groq_api_key"
+OPENAI_API_KEY="your_openapi_key"
 SERP_API_KEY = "your_serpapi_key"
 ```
 
